@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3FE5EE2D28271FE5007108DC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE2C28271FE5007108DC /* Constants.swift */; };
 		3FE5EE2F282722FE007108DC /* RepoListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE2E282722FE007108DC /* RepoListFactory.swift */; };
+		3FE5EE3228272A6F007108DC /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE3128272A6F007108DC /* DependencyContainer.swift */; };
 		D806B6B527C71F1C006F594D /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = D806B6B427C71F1C006F594D /* Apollo */; };
 		D806B6B727C71F1C006F594D /* ApolloSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = D806B6B627C71F1C006F594D /* ApolloSQLite */; };
 		D84E7B1127C81B88000DEB5B /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84E7B1027C81B88000DEB5B /* MockData.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		3FE5EE2C28271FE5007108DC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3FE5EE2E282722FE007108DC /* RepoListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListFactory.swift; sourceTree = "<group>"; };
+		3FE5EE3128272A6F007108DC /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		D84E7B1027C81B88000DEB5B /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		D8F7604A27C724F900B1AB58 /* API+Abstractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Abstractions.swift"; sourceTree = "<group>"; };
 		D8F7604C27C7295500B1AB58 /* GraphQLClient+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GraphQLClient+Search.swift"; sourceTree = "<group>"; };
@@ -103,9 +105,7 @@
 		3FE5EE2A28271F64007108DC /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				D9A10FA1216C4AFD007998EC /* RepoListViewController.swift */,
-				D8F7605227C72F1400B1AB58 /* RepoListViewModel.swift */,
-				3FE5EE2E282722FE007108DC /* RepoListFactory.swift */,
+				3FE5EE3028272A52007108DC /* ReposList */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -114,8 +114,19 @@
 			isa = PBXGroup;
 			children = (
 				3FE5EE2C28271FE5007108DC /* Constants.swift */,
+				3FE5EE3128272A6F007108DC /* DependencyContainer.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		3FE5EE3028272A52007108DC /* ReposList */ = {
+			isa = PBXGroup;
+			children = (
+				D9A10FA1216C4AFD007998EC /* RepoListViewController.swift */,
+				D8F7605227C72F1400B1AB58 /* RepoListViewModel.swift */,
+				3FE5EE2E282722FE007108DC /* RepoListFactory.swift */,
+			);
+			path = ReposList;
 			sourceTree = "<group>";
 		};
 		D84E7B0F27C81B69000DEB5B /* Helpers */ = {
@@ -368,6 +379,7 @@
 				3FE5EE2F282722FE007108DC /* RepoListFactory.swift in Sources */,
 				D9A10FE8216C77CD007998EC /* GraphQLClient.swift in Sources */,
 				D8F7605127C72B1700B1AB58 /* ApolloClient.swift in Sources */,
+				3FE5EE3228272A6F007108DC /* DependencyContainer.swift in Sources */,
 				D9C8E128216DBA11002A64FC /* API.swift in Sources */,
 				D8F7604B27C724F900B1AB58 /* API+Abstractions.swift in Sources */,
 				D8F7605327C72F1400B1AB58 /* RepoListViewModel.swift in Sources */,

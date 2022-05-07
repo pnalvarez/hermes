@@ -7,11 +7,13 @@ protocol RepoListViewModelContract {
 
 //MARK: ViewModel class declaration
 final class RepoListViewModel {
+  //MARK: Facade for simplifying dependency injection
+  typealias Dependencies = HasMainQueue & HasGraphQLClient
   //MARK: Shorter name to define the page info type in this context
   typealias CurrentPage = SearchRepositoriesQuery.Data.Search.PageInfo
   
   //MARK: Properties
-  private let client: GraphQLClient
+  private let dependencies: Dependencies
   
   private var repos: [RepositoryDetails] = [] {
     didSet {
@@ -28,8 +30,8 @@ final class RepoListViewModel {
   
   weak var viewController: RepoListDisplaying?
 
-  init(client: GraphQLClient = ApolloClient.shared) {
-    self.client = client
+  init(dependencies: Dependencies = DependencyContainer()) {
+    self.dependencies = dependencies
   }
 }
 
@@ -40,7 +42,7 @@ private extension RepoListViewModel {
      example search of a given phrase, using default searching parameters
      */
 
-    self.client.searchRepositories(mentioning: phrase) { response in
+    self.dependencies.client.searchRepositories(mentioning: phrase) { response in
       switch response {
       case let .failure(error):
         print(error)
@@ -72,7 +74,7 @@ private extension RepoListViewModel {
     guard let cursor = currentPage?.endCursor else {
       return
     }
-    client.searchRepositories(mentioning: Constants.searchKey,
+    dependencies.client.searchRepositories(mentioning: Constants.searchKey,
                               filter: .after(Cursor(rawValue: cursor))) { [weak self] response in
       guard let self = self else { return }
       switch response {
