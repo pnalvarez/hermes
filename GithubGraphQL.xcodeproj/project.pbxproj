@@ -10,6 +10,20 @@
 		3FE5EE2D28271FE5007108DC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE2C28271FE5007108DC /* Constants.swift */; };
 		3FE5EE2F282722FE007108DC /* RepoListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE2E282722FE007108DC /* RepoListFactory.swift */; };
 		3FE5EE3228272A6F007108DC /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE3128272A6F007108DC /* DependencyContainer.swift */; };
+		3FE5EE3528272E15007108DC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3FE5EE3428272E15007108DC /* SnapKit */; };
+		3FE5EE3828272EA5007108DC /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 3FE5EE3728272EA5007108DC /* SDWebImage */; };
+		3FE5EE3A28272EBC007108DC /* RepoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE3928272EBC007108DC /* RepoListView.swift */; };
+		3FE5EE3C28272FC2007108DC /* ViewCodeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE3B28272FC2007108DC /* ViewCodeProtocol.swift */; };
+		3FE5EE40282731C4007108DC /* ReposListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE3F282731C4007108DC /* ReposListTableViewCell.swift */; };
+		3FE5EE422827355F007108DC /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE412827355F007108DC /* ReusableView.swift */; };
+		3FE5EE4628273593007108DC /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE4528273593007108DC /* UITableView+.swift */; };
+		3FE5EE48282736EE007108DC /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE47282736EE007108DC /* LoadingTableViewCell.swift */; };
+		3FE5EE4A28273790007108DC /* RepoListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE4928273790007108DC /* RepoListDataSource.swift */; };
+		3FE5EE4D28274004007108DC /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE4C28274004007108DC /* RepoDetailsViewController.swift */; };
+		3FE5EE4F28274011007108DC /* RepoDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE4E28274011007108DC /* RepoDetailsView.swift */; };
+		3FE5EE512827401F007108DC /* RepoDetailsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE502827401F007108DC /* RepoDetailsFactory.swift */; };
+		3FE5EE532827402C007108DC /* RepoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE522827402C007108DC /* RepoDetailsViewModel.swift */; };
+		3FE5EE55282746B6007108DC /* RepoListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5EE54282746B6007108DC /* RepoListCoordinator.swift */; };
 		D806B6B527C71F1C006F594D /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = D806B6B427C71F1C006F594D /* Apollo */; };
 		D806B6B727C71F1C006F594D /* ApolloSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = D806B6B627C71F1C006F594D /* ApolloSQLite */; };
 		D84E7B1127C81B88000DEB5B /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84E7B1027C81B88000DEB5B /* MockData.swift */; };
@@ -51,6 +65,18 @@
 		3FE5EE2C28271FE5007108DC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3FE5EE2E282722FE007108DC /* RepoListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListFactory.swift; sourceTree = "<group>"; };
 		3FE5EE3128272A6F007108DC /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		3FE5EE3928272EBC007108DC /* RepoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListView.swift; sourceTree = "<group>"; };
+		3FE5EE3B28272FC2007108DC /* ViewCodeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodeProtocol.swift; sourceTree = "<group>"; };
+		3FE5EE3F282731C4007108DC /* ReposListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposListTableViewCell.swift; sourceTree = "<group>"; };
+		3FE5EE412827355F007108DC /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		3FE5EE4528273593007108DC /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
+		3FE5EE47282736EE007108DC /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
+		3FE5EE4928273790007108DC /* RepoListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListDataSource.swift; sourceTree = "<group>"; };
+		3FE5EE4C28274004007108DC /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
+		3FE5EE4E28274011007108DC /* RepoDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsView.swift; sourceTree = "<group>"; };
+		3FE5EE502827401F007108DC /* RepoDetailsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsFactory.swift; sourceTree = "<group>"; };
+		3FE5EE522827402C007108DC /* RepoDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewModel.swift; sourceTree = "<group>"; };
+		3FE5EE54282746B6007108DC /* RepoListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListCoordinator.swift; sourceTree = "<group>"; };
 		D84E7B1027C81B88000DEB5B /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		D8F7604A27C724F900B1AB58 /* API+Abstractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Abstractions.swift"; sourceTree = "<group>"; };
 		D8F7604C27C7295500B1AB58 /* GraphQLClient+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GraphQLClient+Search.swift"; sourceTree = "<group>"; };
@@ -80,7 +106,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FE5EE3528272E15007108DC /* SnapKit in Frameworks */,
 				D806B6B527C71F1C006F594D /* Apollo in Frameworks */,
+				3FE5EE3828272EA5007108DC /* SDWebImage in Frameworks */,
 				D806B6B727C71F1C006F594D /* ApolloSQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,6 +133,7 @@
 		3FE5EE2A28271F64007108DC /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				3FE5EE4B28273FF5007108DC /* Repo Details */,
 				3FE5EE3028272A52007108DC /* ReposList */,
 			);
 			path = Scenes;
@@ -115,6 +144,8 @@
 			children = (
 				3FE5EE2C28271FE5007108DC /* Constants.swift */,
 				3FE5EE3128272A6F007108DC /* DependencyContainer.swift */,
+				3FE5EE3B28272FC2007108DC /* ViewCodeProtocol.swift */,
+				3FE5EE412827355F007108DC /* ReusableView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -125,8 +156,32 @@
 				D9A10FA1216C4AFD007998EC /* RepoListViewController.swift */,
 				D8F7605227C72F1400B1AB58 /* RepoListViewModel.swift */,
 				3FE5EE2E282722FE007108DC /* RepoListFactory.swift */,
+				3FE5EE3928272EBC007108DC /* RepoListView.swift */,
+				3FE5EE3F282731C4007108DC /* ReposListTableViewCell.swift */,
+				3FE5EE47282736EE007108DC /* LoadingTableViewCell.swift */,
+				3FE5EE4928273790007108DC /* RepoListDataSource.swift */,
+				3FE5EE54282746B6007108DC /* RepoListCoordinator.swift */,
 			);
 			path = ReposList;
+			sourceTree = "<group>";
+		};
+		3FE5EE4428273588007108DC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3FE5EE4528273593007108DC /* UITableView+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3FE5EE4B28273FF5007108DC /* Repo Details */ = {
+			isa = PBXGroup;
+			children = (
+				3FE5EE4C28274004007108DC /* RepoDetailsViewController.swift */,
+				3FE5EE4E28274011007108DC /* RepoDetailsView.swift */,
+				3FE5EE502827401F007108DC /* RepoDetailsFactory.swift */,
+				3FE5EE522827402C007108DC /* RepoDetailsViewModel.swift */,
+			);
+			path = "Repo Details";
 			sourceTree = "<group>";
 		};
 		D84E7B0F27C81B69000DEB5B /* Helpers */ = {
@@ -161,6 +216,7 @@
 		D9A10F9E216C4AFD007998EC /* GithubGraphQL */ = {
 			isa = PBXGroup;
 			children = (
+				3FE5EE4428273588007108DC /* Extensions */,
 				3FE5EE2B28271FDB007108DC /* Utilities */,
 				3FE5EE2A28271F64007108DC /* Scenes */,
 				D9A10FCE216C4E71007998EC /* Networking */,
@@ -233,6 +289,8 @@
 			packageProductDependencies = (
 				D806B6B427C71F1C006F594D /* Apollo */,
 				D806B6B627C71F1C006F594D /* ApolloSQLite */,
+				3FE5EE3428272E15007108DC /* SnapKit */,
+				3FE5EE3728272EA5007108DC /* SDWebImage */,
 			);
 			productName = GithubGraphQL;
 			productReference = D9A10F9C216C4AFD007998EC /* GithubGraphQL.app */;
@@ -308,6 +366,8 @@
 			mainGroup = D9A10F93216C4AFD007998EC;
 			packageReferences = (
 				D806B6B327C71F1C006F594D /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				3FE5EE3328272E15007108DC /* XCRemoteSwiftPackageReference "SnapKit" */,
+				3FE5EE3628272EA4007108DC /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = D9A10F9D216C4AFD007998EC /* Products */;
 			projectDirPath = "";
@@ -375,16 +435,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8F7604D27C7295500B1AB58 /* GraphQLClient+Search.swift in Sources */,
+				3FE5EE48282736EE007108DC /* LoadingTableViewCell.swift in Sources */,
 				D9A10FA2216C4AFD007998EC /* RepoListViewController.swift in Sources */,
+				3FE5EE532827402C007108DC /* RepoDetailsViewModel.swift in Sources */,
+				3FE5EE4D28274004007108DC /* RepoDetailsViewController.swift in Sources */,
+				3FE5EE55282746B6007108DC /* RepoListCoordinator.swift in Sources */,
 				3FE5EE2F282722FE007108DC /* RepoListFactory.swift in Sources */,
 				D9A10FE8216C77CD007998EC /* GraphQLClient.swift in Sources */,
+				3FE5EE3C28272FC2007108DC /* ViewCodeProtocol.swift in Sources */,
 				D8F7605127C72B1700B1AB58 /* ApolloClient.swift in Sources */,
+				3FE5EE422827355F007108DC /* ReusableView.swift in Sources */,
 				3FE5EE3228272A6F007108DC /* DependencyContainer.swift in Sources */,
+				3FE5EE512827401F007108DC /* RepoDetailsFactory.swift in Sources */,
 				D9C8E128216DBA11002A64FC /* API.swift in Sources */,
+				3FE5EE4628273593007108DC /* UITableView+.swift in Sources */,
 				D8F7604B27C724F900B1AB58 /* API+Abstractions.swift in Sources */,
 				D8F7605327C72F1400B1AB58 /* RepoListViewModel.swift in Sources */,
 				D9A10FA0216C4AFD007998EC /* AppDelegate.swift in Sources */,
+				3FE5EE4A28273790007108DC /* RepoListDataSource.swift in Sources */,
+				3FE5EE40282731C4007108DC /* ReposListTableViewCell.swift in Sources */,
+				3FE5EE3A28272EBC007108DC /* RepoListView.swift in Sources */,
 				3FE5EE2D28271FE5007108DC /* Constants.swift in Sources */,
+				3FE5EE4F28274011007108DC /* RepoDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,6 +779,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3FE5EE3328272E15007108DC /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		3FE5EE3628272EA4007108DC /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		D806B6B327C71F1C006F594D /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apollographql/apollo-ios";
@@ -718,6 +806,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3FE5EE3428272E15007108DC /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FE5EE3328272E15007108DC /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		3FE5EE3728272EA5007108DC /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FE5EE3628272EA4007108DC /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
 		D806B6B427C71F1C006F594D /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D806B6B327C71F1C006F594D /* XCRemoteSwiftPackageReference "apollo-ios" */;

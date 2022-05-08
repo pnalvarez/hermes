@@ -8,8 +8,11 @@
 
 enum RepoListFactory {
   static func build() -> RepoListViewController {
-    let viewModel = RepoListViewModel()
+    let coordinator = RepoListCoordinator()
+    let viewModel = RepoListViewModel(coordinator: coordinator)
     let viewController = RepoListViewController(viewModel: viewModel)
+    viewModel.viewController = viewController
+    coordinator.viewController = viewController
     return viewController
   }
 }

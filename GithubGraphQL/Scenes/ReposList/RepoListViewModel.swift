@@ -1,8 +1,11 @@
 import Apollo
 
 protocol RepoListViewModelContract {
+  var totalRepos: Int { get }
+  var reposInterface: [RepositoryDetails] { get }
   func viewDidLoad()
   func willDisplayCell(index: Int)
+  func didSelectCell(index: Int)
 }
 
 //MARK: ViewModel class declaration
@@ -17,21 +20,37 @@ final class RepoListViewModel {
   
   private var repos: [RepositoryDetails] = [] {
     didSet {
-      viewController?.updateUI()
+      dependencies.mainQueue.async {
+        self.viewController?.updateUI()
+      }
     }
   }
   
   private var currentPage: CurrentPage?
-  private var currentIndex: Int = 14
   
-  private var totalRepos: Int {
+  private var currentIndex: Int = -1 {
+    didSet {
+      dependencies.mainQueue.async {
+        self.viewController?.updateUI()
+      }
+    }
+  }
+  
+  var totalRepos: Int {
     currentIndex + 1
   }
   
+  var reposInterface: [RepositoryDetails] {
+    repos
+  }
+  
   weak var viewController: RepoListDisplaying?
+  private let coordinator: RepoListCoordinatorContract
 
-  init(dependencies: Dependencies = DependencyContainer()) {
+  init(dependencies: Dependencies = DependencyContainer(),
+       coordinator: RepoListCoordinatorContract) {
     self.dependencies = dependencies
+    self.coordinator = coordinator
   }
 }
 
@@ -41,8 +60,9 @@ private extension RepoListViewModel {
     /*
      example search of a given phrase, using default searching parameters
      */
-
-    self.dependencies.client.searchRepositories(mentioning: phrase) { response in
+    viewController?.displayLoading(true)
+    dependencies.client.searchRepositories(mentioning: phrase) { response in
+      self.viewController?.displayLoading(false)
       switch response {
       case let .failure(error):
         print(error)
@@ -66,6 +86,7 @@ private extension RepoListViewModel {
         }
         self.currentPage = results.pageInfo
         self.repos.append(contentsOf: results.repos)
+        self.currentIndex += results.repos.count
       }
     }
   }
@@ -74,9 +95,11 @@ private extension RepoListViewModel {
     guard let cursor = currentPage?.endCursor else {
       return
     }
+    viewController?.displayLoading(true)
     dependencies.client.searchRepositories(mentioning: Constants.searchKey,
                               filter: .after(Cursor(rawValue: cursor))) { [weak self] response in
       guard let self = self else { return }
+      self.viewController?.displayLoading(false)
       switch response {
       case let .failure(error):
         print(error)
@@ -99,5 +122,9 @@ extension RepoListViewModel: RepoListViewModelContract {
       currentIndex += Constants.defaultPageLimit
       searchNext()
     }
+  }
+  
+  func didSelectCell(index: Int) {
+    coordinator.routeToDetails(repositoryDetails: repos[index])
   }
 }

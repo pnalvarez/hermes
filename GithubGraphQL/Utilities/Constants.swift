@@ -8,5 +8,7 @@
 
 enum Constants {
   static let searchKey = "graphql"
+  static let starsFormat = "Stars: %@"
+  static let repoListTitle = "Repos List"
   static let defaultPageLimit = 15
 }
