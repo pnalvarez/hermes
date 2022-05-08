@@ -1,24 +1,24 @@
-There were my choices during this challenge:
+These were my choices during this challenge:
 
-Architecture
+Architecture:
 
-- Used MVVM-C, as required, I used MVVM but included the Coordinator Design Pattern, which allows to navigate to other scenes having access to the navigationController
+- As required, I used MVVM but included the Coordinator Design Pattern, which allows to navigate to other scenes by having access to the navigationController.
 
-User Interface
+User Interface:
 
-- I opted to use UIKit with ViewCode, since interface builders bring much more complexity when having to make changes
+- I opted to use UIKit with ViewCode, since interface builders bring much more complexity when having to make changes.
 - In order to avoid crashings, I put all the ViewCode pipeline(hierarchy, constraint setup and additional configurations) into a protocol that is called once the view is initialized.
 
-Design Patterns
+Design Patterns:
 
-- Coordinator: described above
-- Facade with Dependency Injection: In order to provide the necessary dependencies via a single place in a module, I defined a class that holds all dependencies(Dependency Container) and each one is added as required by a protocol `HasTheDependency`. When a class demans some specific dependencies, I define the requirements via a typealias for a type that implements some dependencies requirement protocol. This way, I only bring the specific tools for the class instead of the entire box.
+- Coordinator: described above.
+- Facade with Dependency Injection: In order to provide the necessary dependencies via a single place in a module, I defined a class that holds all dependencies(Dependency Container) and each one is added as required by a protocol `HasTheDependency`. When a class demands some specific dependencies, I define the requirements via a typealias for a type that implements some dependencies requirement protocol. This way, I only bring the specific tools for the class instead of the entire box.
 - Delegation: The layers inside a MVVM scene communicate with each other via delegate, not having access to concrete types. ViewModel sends events to the ViewController and Coordinator via a delegation protocol
 - Factory: Created an enum with a method to instantiate each layer of a scene and bind them together.
 
 Scenes:
 
-- RepoList: Displays a list of scenes
+- RepoList: Displays a list of repos
 - RepoDetails: Displays details for a specific repo
 
 Pagination logic:
