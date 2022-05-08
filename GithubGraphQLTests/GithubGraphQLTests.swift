@@ -14,11 +14,6 @@ class GithubGraphQLTests: XCTestCase {
     }
 
     func testExample() {
-      let mockedResponse = SearchRepositoriesQuery.Data(search: .init(
-        pageInfo: .init(startCursor: "startCursor", endCursor: nil, hasNextPage: false, hasPreviousPage: false),
-        edges: makeEdges(count: 3)
-      ))
-      let viewModel = RepoListViewModel(client: MockGraphQLClient<SearchRepositoriesQuery>(response: mockedResponse))
 
       /* add assertions to validate view model state after making requests */
     }

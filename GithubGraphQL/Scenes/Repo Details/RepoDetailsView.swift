@@ -29,6 +29,7 @@ final class RepoDetailsView: UIView {
     let view = UILabel()
     view.font = .systemFont(ofSize: 16)
     view.textColor = .systemBlue
+    view.numberOfLines = 0
     return view
   }()
   
@@ -74,11 +75,6 @@ final class RepoDetailsView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
   
-  override func layoutSubviews() {
-    super.layoutSubviews()
-    ownerImageView.layer.cornerRadius = ownerImageView.frame.width / 2
-  }
-  
   func setup(viewModel: ViewModel) {
     nameLabel.text = viewModel.name
     urlLabel.text = viewModel.url
@@ -107,6 +103,7 @@ extension RepoDetailsView: ViewCodeProtocol {
     urlLabel.snp.makeConstraints { make in
       make.top.equalTo(nameLabel.snp.bottom).offset(16)
       make.left.equalTo(nameLabel)
+      make.right.equalToSuperview().inset(12)
     }
     starImageView.snp.makeConstraints { make in
       make.top.equalTo(urlLabel.snp.bottom).offset(16)

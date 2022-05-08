@@ -3,10 +3,14 @@ import UIKit
 protocol RepoListDisplaying: AnyObject {
   func updateUI()
   func displayLoading(_ loading: Bool)
+  func displayError(_ message: String)
 }
 
 final class RepoListViewController: UIViewController {
+  typealias Dependencies = HasMainQueue
+  
   private let viewModel: RepoListViewModelContract
+  private let dependencies: Dependencies
   
   private lazy var activityView: UIActivityIndicatorView = {
       let view = UIActivityIndicatorView(style: .large)
@@ -22,6 +26,7 @@ final class RepoListViewController: UIViewController {
     view.delegate = self
     view.dataSource = self
     view.registerCell(cellType: ReposListTableViewCell.self)
+    view.registerCell(cellType: LoadingTableViewCell.self)
     return view
   }()
   
@@ -32,8 +37,10 @@ final class RepoListViewController: UIViewController {
     return view
   }()
   
-  init(viewModel: RepoListViewModelContract) {
+  init(viewModel: RepoListViewModelContract,
+       dependencies: Dependencies = DependencyContainer()) {
     self.viewModel = viewModel
+    self.dependencies = dependencies
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -55,11 +62,23 @@ final class RepoListViewController: UIViewController {
 
 extension RepoListViewController: RepoListDisplaying {
   func updateUI() {
-    tableView.reloadData()
+    dependencies.mainQueue.async {
+      self.tableView.reloadData()
+    }
   }
   
   func displayLoading(_ loading: Bool) {
     loading ? startLoading() : stopLoading()
+  }
+  
+  func displayError(_ message: String) {
+    let alertController = UIAlertController(title: "An error ocurred",
+                                            message: message,
+                                            preferredStyle: .alert)
+    alertController.addAction(UIAlertAction(title: "Ok",
+                                            style: .default))
+    present(alertController,
+            animated: true)
   }
 }
 
@@ -84,7 +103,8 @@ extension RepoListViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    if indexPath.row > viewModel.totalRepos {
+    /*Has more cells than already fetched repos*/
+    if indexPath.row > viewModel.reposInterface.count - 1 {
       let cell = tableView.dequeueReusableCell(indexPath: indexPath,
                                                type: LoadingTableViewCell.self)
       return cell
@@ -101,7 +121,7 @@ extension RepoListViewController: UITableViewDataSource {
 
 extension RepoListViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//    viewModel.willDisplayCell(index: indexPath.row)
+    viewModel.willDisplayCell(index: indexPath.row)
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

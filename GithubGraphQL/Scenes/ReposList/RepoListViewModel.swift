@@ -11,7 +11,7 @@ protocol RepoListViewModelContract {
 //MARK: ViewModel class declaration
 final class RepoListViewModel {
   //MARK: Facade for simplifying dependency injection
-  typealias Dependencies = HasMainQueue & HasGraphQLClient
+  typealias Dependencies = HasGraphQLClient
   //MARK: Shorter name to define the page info type in this context
   typealias CurrentPage = SearchRepositoriesQuery.Data.Search.PageInfo
   
@@ -34,7 +34,7 @@ final class RepoListViewModel {
   
   weak var viewController: RepoListDisplaying?
   private let coordinator: RepoListCoordinatorContract
-
+  
   init(dependencies: Dependencies = DependencyContainer(),
        coordinator: RepoListCoordinatorContract) {
     self.dependencies = dependencies
@@ -49,35 +49,19 @@ private extension RepoListViewModel {
      example search of a given phrase, using default searching parameters
      */
     viewController?.displayLoading(true)
-    dependencies.client.searchRepositories(mentioning: phrase) { response in
+    dependencies.client.searchRepositories(mentioning: phrase,
+                                           cachePolicy: .fetchIgnoringCacheData) { [weak self] response in
+      guard let self = self else { return }
       self.viewController?.displayLoading(false)
       switch response {
       case let .failure(error):
-        print(error)
-
+        self.viewController?.displayError(error.localizedDescription)
+        
       case let .success(results):
-        let pageInfo = results.pageInfo
-        print("pageInfo: \n")
-        print("hasNextPage: \(pageInfo.hasNextPage)")
-        print("hasPreviousPage: \(pageInfo.hasPreviousPage)")
-        print("startCursor: \(String(describing: pageInfo.startCursor))")
-        print("endCursor: \(String(describing: pageInfo.endCursor))")
-        print("\n")
-
-        results.repos.forEach { repository in
-          print("Name: \(repository.name)")
-          print("Path: \(repository.url)")
-          print("Owner: \(repository.owner.login)")
-          print("avatar: \(repository.owner.avatarUrl)")
-          print("Stars: \(repository.stargazers.totalCount)")
-          print("\n")
-        }
         self.currentPage = results.pageInfo
         self.repos.append(contentsOf: results.repos)
         self.currentIndex += results.repos.count
-        self.dependencies.mainQueue.async {
-          self.viewController?.updateUI()
-        }
+        self.viewController?.updateUI()
       }
     }
   }
@@ -86,17 +70,17 @@ private extension RepoListViewModel {
     guard let cursor = currentPage?.endCursor else {
       return
     }
-    viewController?.displayLoading(true)
     dependencies.client.searchRepositories(mentioning: Constants.searchKey,
-                              filter: .after(Cursor(rawValue: cursor))) { [weak self] response in
+                                           filter: .after(Cursor(rawValue: cursor)),
+                                           cachePolicy: .fetchIgnoringCacheData) { [weak self] response in
       guard let self = self else { return }
-      self.viewController?.displayLoading(false)
       switch response {
       case let .failure(error):
-        print(error)
+        self.viewController?.displayError(error.localizedDescription)
       case let .success(results):
         self.currentPage = results.pageInfo
         self.repos.append(contentsOf: results.repos)
+        self.viewController?.updateUI()
       }
     }
   }
@@ -111,6 +95,7 @@ extension RepoListViewModel: RepoListViewModelContract {
   func willDisplayCell(index: Int) {
     if index >= currentIndex {
       currentIndex += Constants.defaultPageLimit
+      viewController?.updateUI()
       searchNext()
     }
   }
