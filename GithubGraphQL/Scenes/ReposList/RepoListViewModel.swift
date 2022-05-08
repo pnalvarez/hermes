@@ -18,23 +18,11 @@ final class RepoListViewModel {
   //MARK: Properties
   private let dependencies: Dependencies
   
-  private var repos: [RepositoryDetails] = [] {
-    didSet {
-      dependencies.mainQueue.async {
-        self.viewController?.updateUI()
-      }
-    }
-  }
+  private var repos: [RepositoryDetails] = []
   
   private var currentPage: CurrentPage?
   
-  private var currentIndex: Int = -1 {
-    didSet {
-      dependencies.mainQueue.async {
-        self.viewController?.updateUI()
-      }
-    }
-  }
+  private var currentIndex: Int = -1
   
   var totalRepos: Int {
     currentIndex + 1
@@ -87,6 +75,9 @@ private extension RepoListViewModel {
         self.currentPage = results.pageInfo
         self.repos.append(contentsOf: results.repos)
         self.currentIndex += results.repos.count
+        self.dependencies.mainQueue.async {
+          self.viewController?.updateUI()
+        }
       }
     }
   }
